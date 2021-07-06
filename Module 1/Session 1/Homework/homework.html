@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework 1.1</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1>Create Playlist</h1>
+    <form>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title"><br>
+        <label for="desc">Description</label>
+        <input type="desc" id="desc" name="desc"><br>
+    </form> 
+    <button onclick="showAlert()">Submit</button>
+
+    <div class="body">
+        <img src="https://picsum.photos/200/300">
+        <p>Track title</p>
+        <p>Artist</p>
+        <p>Album</p>
+        <button>Select</button>
+    </div>
+
+    <script>
+      function showAlert(){
+          alert("Title: "+document.getElementById('title').value+
+          "\nDescription: "+document.getElementById('desc').value);
+      }
+    </script>
+  </body>
+</html>
