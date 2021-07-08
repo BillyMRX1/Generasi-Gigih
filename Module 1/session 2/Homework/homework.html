@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework 1.2</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1>Create Playlist</h1>
+    <form>
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title"><br>
+        <label for="desc">Description</label>
+        <input type="desc" id="desc" name="desc"><br>
+    </form> 
+    <button onclick="showAlert()">Submit</button>
+
+    <div class="body">
+        <img id="image" src="https://picsum.photos/200/300">
+        <p id="track_title">Track title</p>
+        <p id="artist">Artist</p>
+        <p id="album">Album</p>
+        <button>Select</button>
+    </div>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      function showAlert(){
+          alert("Title: "+document.getElementById('title').value+
+          "\nDescription: "+document.getElementById('desc').value);
+      }
+
+      axios
+        .get("https://gist.githubusercontent.com/aryapradipta9/e6492383477803b233916e01f36d5465/raw/66942c739d66d3774303f84071696aa865a07077/single-sample.json",{})
+        .then(response =>{
+          console.log(response.data)
+
+          const title = document.getElementById('track_title');
+          const artist = document.getElementById('artist');
+          const album = document.getElementById('album');
+          const image = document.getElementById('image');
+    
+          title.textContent = "Track Title : "+response.data.name
+          artist.textContent = "Artist : "+response.data.artists[0].name
+          album.textContent = "Album : "+response.data.album.name
+          image.src = response.data.album.images[1].url
+        })
+        .catch(err => alert(err.data))
+
+    </script>
+  </body>
+</html>
